@@ -23,7 +23,7 @@ Open http://127.0.0.1:4174 in a browser. No build step or package installation i
 
 This is a client-side web app, not a native Android/iOS binary. Browser installation and offline support depend on the browser and hosting authentication. Alarms need the page open and device awake; this is not a replacement for system wake-up alarms. Notifications require permission. The app does not run a background alarm service.
 
-All study data remains in browser localStorage. There is no account, server database, cloud sync, coaching content feed, or third-party analytics. Export backups before clearing browser data. Use one editing tab at a time. Google Fonts is optional; system fallback fonts work when it is unavailable.
+All study data remains in browser localStorage. There is no account, server database, cloud sync, coaching content feed, or third-party analytics. Export backups before clearing browser data. Use one editing tab at a time. Typography uses native system fonts: San Francisco on Apple devices, with platform-appropriate system fallbacks elsewhere. No external font requests are made.
 
 The syllabus is an intentionally broad preparation checklist, not an exhaustive or official syllabus. Follow current UPSC notices for authoritative requirements. Starter tasks and notes are editable examples; no study results are fabricated.
 
