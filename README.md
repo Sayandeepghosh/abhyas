@@ -2,6 +2,16 @@
 
 A responsive, installable UPSC preparation workspace for Prelims and Mains.
 
+## GitHub Pages
+
+Website: https://sayandeepghosh.github.io/abhyas/
+
+Repository: https://github.com/Sayandeepghosh/abhyas
+
+Every push to `main` runs the JavaScript checks and core tests, then deploys `dist/` to GitHub Pages using `.github/workflows/pages.yml`. The workflow can also be run manually from the Actions tab. Pages must use **GitHub Actions** as its deployment source.
+
+The website and source repository are public. Personal study data stays in each visitor's browser and is not committed or uploaded to GitHub. The previous private Sites version is a separate deployment; this workflow updates GitHub Pages only. To move your own notes between the two sites, export a backup from Settings on the old site and import it on the new site.
+
 ## Run locally
 
 From this folder: `python -m http.server 4174 --bind 127.0.0.1 --directory dist`.
