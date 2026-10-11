@@ -13,3 +13,10 @@
 /* Native typography and a consistent, measured geometry. */
 body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}h1{font-weight:600;letter-spacing:-1.1px}h2{font-weight:600}.card,.stat-card,.break-strip,.note-preview{border-radius:12px}.btn,.nav-item,.mode-tabs,.segmented,input,select,textarea{border-radius:8px}.timer-number{font-variant-numeric:tabular-nums;font-weight:400;letter-spacing:-3.5px}.stat-value{font-variant-numeric:tabular-nums;font-weight:600}.mode-tab{font-weight:500}.quote-card blockquote{font-weight:450;letter-spacing:-.2px}.small-quote{letter-spacing:-.4px}.brand{font-weight:750}.card-header{align-items:flex-start}.focus-bottom{gap:9px}.focus-bottom label{min-width:0}.today-label{font-size:11px}.stat-foot{line-height:1.5}.profile small{font-size:10px}.workspace-label{font-size:10px}.eyebrow{font-size:10px}.task-title{font-size:12px}.task-meta{font-size:10px}.tag{font-size:9px}.stat-top{font-size:12px}.stat-foot{font-size:10px}.card-subtitle{font-size:11px}.timer-caption{font-size:12px}.nav-item{font-size:13px}.breadcrumbs{font-size:12px}.brand small{font-size:8px}.focus-card .pill{font-size:9px}.focus-bottom{font-size:10px}.focus-subject{font-size:11px}.task-row{gap:10px}.heading-actions{flex-shrink:0}
 @media(max-width:700px){.page-heading h1{font-size:26px;letter-spacing:-.9px}.page-heading h1>span{font-size:22px}.stat-top{font-size:11px}.stat-foot{font-size:9px}.focus-card .card-header{flex-wrap:wrap}.focus-bottom label{flex:1 1 100%}.nav-item{font-size:13px}.heading-actions{flex-shrink:1}.card-header h2{line-height:1.35}.page-heading p{font-size:12px}}
+
+/* Keep every navigation item reachable on short desktop and mobile screens. */
+.sidebar{overflow-y:auto;overflow-x:hidden;overscroll-behavior-y:contain;scrollbar-width:thin;scrollbar-color:var(--line) transparent;padding-bottom:max(20px,env(safe-area-inset-bottom))}
+.sidebar>*{flex-shrink:0}
+.sidebar::-webkit-scrollbar{width:5px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px}
+@media(max-height:760px){.sidebar .small-quote{display:none}.sidebar .brand{padding-bottom:20px}.sidebar-bottom{padding-top:16px}}
