@@ -2,6 +2,21 @@
 
 Scope: the static website, shared study tools, GitHub Pages deployment workflow, and the new offline Android wrapper. This is a source review with automated regression/stress tests and browser checks, not a third-party penetration-test certification.
 
+## Studio 1.1 update
+
+The full visual redesign adds CSS-built sculptural artwork, illustrated navigation cards, an interactive seven-day chart, a searchable keyboard command palette, immersive focus mode, task-completion feedback and persistent motion preferences. The saved study-data format remains version 1, so existing notes and progress continue to load.
+
+Release checks added in this update:
+
+- Six motion regression tests cover accessibility preferences, one-frame scheduling for rapid pointer movement, observer cleanup, hidden-page/touch behavior, and stable immersive controls after normal clicks.
+- Integration checks compare every HTML resource URL against the offline cache and Android asset allowlist. These caught a cache-version mismatch inherited from the previous release; it is corrected in cache v7.
+- Browser checks at 1440×1000, 768×1024, 390×844 and 320×568: navigation and checked study views had no horizontal overflow. Command search, reduced-motion persistence, chart selection, focus start/pause inside immersive mode, and Escape to leave immersive mode worked.
+- With the local HTTP server stopped, reloading the app restored the new graphics, styling, routes and command palette from the offline cache.
+- Off-screen artwork was observed paused. Reduced motion produced `animation-name: none` for the decorative sphere. Pointer geometry is read at most once per requested animation frame; observers and pending frames are cleaned up when views change. No external animation library, remote font or raster hero asset is loaded.
+- The new motion controller is about 6.7 KB raw / 2.5 KB gzip. All HTML, CSS, JS, SVG and manifest files total about 156 KB raw / 46 KB gzip, excluding the two app-icon PNGs. Compression figures are local estimates, not measured network timings. No phone FPS or battery-life benchmark is claimed.
+
+The device-testing and foreground-alarm limitations below still apply. “Production deployment” does not mean a completed physical Android/OEM compatibility certification.
+
 ## Fixed findings
 
 | Area | Issue addressed | Result |
@@ -22,7 +37,7 @@ Scope: the static website, shared study tools, GitHub Pages deployment workflow,
 
 ## Automated verification
 
-Run `node --test tests/*.test.cjs` from the repository root. The release suite has **47 passing tests** covering:
+Run `node --test tests/*.test.cjs` from the repository root. The release suite has **55 passing tests** covering:
 
 - Normal timer completion, pause/reset, break accounting, persistence and activity totals.
 - Corrupt storage recovery, quota errors, unavailable storage, conflicting writes and duplicate tabs.

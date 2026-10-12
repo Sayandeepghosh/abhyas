@@ -28,6 +28,8 @@ jobs:
           node --check dist/sw.js
           node --check dist/data.js
           node --check dist/theme.js
+          node --check dist/studio.js
+          node --check dist/motion.js
       - name: Test study tools
         run: node --test tests/*.test.cjs
       - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0

@@ -7,11 +7,13 @@
   <meta name="theme-color" content="#ffffff"><meta name="description" content="A little more focused, every day. Abhyas is your personal UPSC workspace for Prelims, Mains, revision and a healthier study routine.">
   <title>Abhyas — A little more focused, every day.</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="manifest" href="manifest.webmanifest">
-  <script src="theme.js?v=6"></script>
-  <link rel="stylesheet" href="styles.css?v=6">
-  <link rel="stylesheet" href="design.css?v=6">
-  <script src="data.js?v=6" defer></script>
-  <script src="app.js?v=6" defer></script>
+  <script src="theme.js?v=7"></script>
+  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="studio.css?v=7">
+  <script src="data.js?v=7" defer></script>
+  <script src="studio.js?v=7" defer></script>
+  <script src="app.js?v=7" defer></script>
+  <script src="motion.js?v=7" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -24,7 +26,7 @@
   <div id="screen-shade" class="screen-shade" aria-hidden="true"></div>
   <nav class="mobile-tabs" id="mobile-tabs" aria-label="Quick navigation"></nav>
   <div class="app-shell">
-    <header class="topbar"><div class="breadcrumbs"><button class="icon-button mobile-menu" id="menu-button" aria-label="Open navigation"></button><span>Workspace</span><span class="crumb-slash">/</span><strong id="breadcrumb">Overview</strong></div><div class="header-actions"><span class="today-label" id="today-label"></span><button class="icon-button" id="theme-button" aria-label="Switch to dark mode"></button><button class="icon-button reminder-button" data-page="reminders" aria-label="Study reminders"></button><button class="top-avatar" data-page="settings" aria-label="Profile settings">A</button></div></header>
+    <header class="topbar"><div class="breadcrumbs"><button class="icon-button mobile-menu" id="menu-button" aria-label="Open navigation"></button><span>Workspace</span><span class="crumb-slash">/</span><strong id="breadcrumb">Overview</strong></div><div class="header-actions"><button class="command-trigger" data-open-command aria-label="Search tools"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><span>Find your flow</span><kbd>⌘ K</kbd></button><span class="today-label" id="today-label"></span><button class="icon-button" id="theme-button" aria-label="Switch to dark mode"></button><button class="icon-button reminder-button" data-page="reminders" aria-label="Study reminders"></button><button class="top-avatar" data-page="settings" aria-label="Profile settings">A</button></div></header>
     <main id="main" tabindex="-1"></main>
     <footer>Built for the long journey.<span>A little more focused, every day.</span><button id="guide-button">Getting started ↗</button></footer>
   </div>

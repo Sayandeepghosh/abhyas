@@ -28,7 +28,9 @@ Open http://127.0.0.1:4174 in a browser. No build step or package installation i
 - Guided breathing, screen breaks, walking breaks and water log.
 - Theme and profile preferences, personal target countdown, JSON backup export/import.
 - Responsive mobile navigation, web app manifest and offline asset caching.
-- White, black and subtle teal visual design, geometric illustration, timer ring and reduced-motion support.
+- Rebuilt Studio dashboard with sculptural CSS artwork, illustrated tool cards and an interactive seven-day chart.
+- Immersive focus mode, keyboard command palette (Ctrl/Cmd + K), task feedback, and saved motion preferences.
+- White, black and subtle teal themes; native system fonts; off-screen animation pausing and reduced-motion support.
 - Signed offline Android edition with native file import/export; see [Android instructions](android/README.md).
 
 ## Important product boundaries

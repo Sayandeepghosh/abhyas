@@ -1,9 +1,9 @@
 # Abhyas for Android
 
-The signed Android edition packages the same `dist/` interface as the website, including the white/black/teal theme, dark mode, notes, planner, focus timer and study tools. It works offline from its first launch. It uses the device's Android System WebView; keep that component updated.
+The signed Android Studio edition packages the same `dist/` interface as the website, including the rebuilt sculptural dashboard, white/black/teal theme, illustrated tool cards, command palette, immersive focus mode, motion preferences, notes, planner and study tools. It works offline from its first launch. It uses the device's Android System WebView; keep that component updated.
 
 - Android 8.0 or newer (minimum API 26), target API 35.
-- Package: `io.github.sayandeepghosh.abhyas`, version 1.0.0, version code 1.
+- Package: `io.github.sayandeepghosh.abhyas`, version 1.1.0, version code 2.
 - No runtime permissions or Internet permission. Only bundled assets load inside the app.
 - JSON import and JSON/text export use the system document picker, without broad storage access.
 - The screen stays awake while a focus/break timer runs in the foreground.
@@ -12,7 +12,7 @@ The signed Android edition packages the same `dist/` interface as the website, i
 
 ## Install
 
-Download `Abhyas-1.0.0.apk` from the repository's GitHub release on your phone, open the file, and allow installation from that browser/file manager if Android asks. This is a self-signed release for direct installation, not a Play Store listing. The release includes a SHA-256 checksum.
+Download `Abhyas-1.1.0.apk` from the repository's GitHub release on your phone, open the file, and allow installation from that browser/file manager if Android asks. This is a self-signed release for direct installation, not a Play Store listing. The release includes a SHA-256 checksum.
 
 ## Build
 
@@ -26,7 +26,7 @@ python android/build.py `
   --android-jar ../android-tools/platform/android-35/android.jar `
   --jdk C:/path/to/jdk-17 `
   --signing-dir ../abhyas-signing `
-  --output ../releases/Abhyas-1.0.0.apk
+  --output ../releases/Abhyas-1.1.0.apk
 ```
 
 The first build generates an RSA-4096 release key and a random password in the supplied signing directory, which **must be outside the repository**. Subsequent builds reuse the same key. Keep both files private and back them up securely: updates must use this key and a higher `versionCode`. Losing it prevents installing compatible updates over the existing app. Never upload signing material to releases or source control.

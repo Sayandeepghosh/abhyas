@@ -8,6 +8,7 @@ function app(){
  const node=s=>{if(!nodes.has(s))nodes.set(s,{hidden:true,dataset:{},value:'',innerHTML:'',textContent:'',classList:{add(){},remove(){},toggle(){},contains(){return false}},setAttribute(){},removeAttribute(){},focus(){},showModal(){},close(){}});return nodes.get(s)};
  const context=vm.createContext({console,crypto:{randomUUID},setInterval(){},clearInterval(){},setTimeout(){},clearTimeout(){},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},location:{hash:'#dashboard'},navigator:{},document:{documentElement:{dataset:{theme:'light'}},querySelector:node,querySelectorAll:()=>[],addEventListener(){}},window:{addEventListener(){},scrollTo(){}}});
  vm.runInContext(fs.readFileSync('dist/data.js','utf8'),context);
+ vm.runInContext(fs.readFileSync('dist/studio.js','utf8'),context);
  vm.runInContext(fs.readFileSync('dist/app.js','utf8'),context);
  vm.runInContext('var alerts=[]; showAlert=(...args)=>alerts.push(args);',context);
  return s=>vm.runInContext(s,context);

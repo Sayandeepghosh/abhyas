@@ -9,7 +9,7 @@ module.exports=function harness(options={}){
  const timers=[];
  class TestDate extends Date{constructor(...args){super(...(args.length?args:[clock]))}static now(){return clock}}
  const context=vm.createContext({console,Date:TestDate,performance,crypto:{randomUUID},setInterval(){return 1},clearInterval(){},setTimeout(fn){timers.push(fn);return timers.length},clearTimeout(){},localStorage:{getItem:k=>{if(options.unavailable)throw Error('SecurityError');return storage.get(k)||null},setItem:(k,v)=>{if(options.unavailable||v.length>quota)throw Error('QuotaExceededError');storage.set(k,v)}},location:{hash:'#dashboard',reload(){}},navigator:options.navigator||{},document:{documentElement:{dataset:{theme:'light'}},querySelector:node,querySelectorAll:()=>[],addEventListener:listen('document')},window:{addEventListener:listen('window'),scrollTo(){}},FormData:class{constructor(form){return Object.entries(form.values)}},Blob,URL});
- for(const file of ['dist/data.js','dist/app.js'])vm.runInContext(fs.readFileSync(file,'utf8'),context);
+ for(const file of ['dist/data.js','dist/studio.js','dist/app.js'])vm.runInContext(fs.readFileSync(file,'utf8'),context);
  const run=s=>vm.runInContext(s,context);
  return {run,storage,nodes,node,events,timers,setQuota:n=>quota=n,setClock:n=>clock=n,advance:n=>clock+=n,
  click(action,extra={}){const element={dataset:{action,...extra}};for(const fn of events.document.click||[])fn({target:{closest:selector=>selector==='[data-action]'?element:null},preventDefault(){}})},

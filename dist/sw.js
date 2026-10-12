@@ -1,7 +1,7 @@
 'use strict';
 const CACHE_PREFIX=`abhyas-${self.registration.scope}-`;
-const CACHE=CACHE_PREFIX+'v6';
-const ASSETS=['./','./index.html','./styles.css?v=5','./theme.js?v=5','./data.js?v=5','./app.js?v=5','./icon.svg','./icon-192.png','./icon-512.png','./manifest.webmanifest'];
+const CACHE=CACHE_PREFIX+'v7';
+const ASSETS=['./','./index.html','./styles.css?v=7','./studio.css?v=7','./theme.js?v=7','./data.js?v=7','./studio.js?v=7','./app.js?v=7','./motion.js?v=7','./icon.svg','./icon-192.png','./icon-512.png','./manifest.webmanifest'];
 const assetURLs=new Set(ASSETS.map(path=>new URL(path,self.registration.scope).href));
 const indexURL=new URL('./index.html',self.registration.scope).href;
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));

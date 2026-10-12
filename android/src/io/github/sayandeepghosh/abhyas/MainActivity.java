@@ -37,8 +37,8 @@ public final class MainActivity extends Activity {
     private static final int IMPORT = 21, EXPORT = 22;
     private static final int MAX_EXPORT_BYTES = 32 * 1024 * 1024;
     private static final Set<String> ASSETS = new HashSet<>(Arrays.asList(
-        "index.html", "styles.css", "design.css", "theme.js", "data.js", "app.js",
-        "icon.svg", "icon-192.png", "icon-512.png", "study-art.svg", "manifest.webmanifest"));
+        "index.html", "styles.css", "studio.css", "studio.js", "motion.js", "theme.js", "data.js", "app.js",
+        "icon.svg", "icon-192.png", "icon-512.png", "manifest.webmanifest"));
     private WebView web;
     private FrameLayout frame;
     private ValueCallback<Uri[]> importResult;
