@@ -20,3 +20,6 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}h1{fon
 .sidebar::-webkit-scrollbar{width:5px}
 .sidebar::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px}
 @media(max-height:760px){.sidebar .small-quote{display:none}.sidebar .brand{padding-bottom:20px}.sidebar-bottom{padding-top:16px}}
+
+.data-status{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:200;width:min(560px,calc(100% - 32px));padding:18px;background:var(--card);border:2px solid var(--accent);border-radius:12px;box-shadow:0 8px 35px #0003}
+.data-status p{font-size:13px;line-height:1.6;margin-bottom:12px}.data-status .btn{margin-right:8px}

@@ -1,0 +1,17 @@
+const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs');
+function worker(options={}){
+ const handlers={},records=new Map(),deleted=[],scope='https://example.test/abhyas/',waits=[];
+ let response,fetchCount=0;
+ const cache={addAll:async()=>{},match:async key=>records.get(typeof key==='string'?key:key.url),put:async(key,value)=>{if(options.cacheFull)throw Error('quota');records.set(key,value)}};
+ const context=vm.createContext({URL,AbortController,Response,setTimeout,clearTimeout,self:{registration:{scope},addEventListener:(n,f)=>handlers[n]=f,skipWaiting:async()=>{},clients:{claim:async()=>{}}},caches:{open:async()=>cache,keys:async()=>options.keys||[],delete:async key=>deleted.push(key)},fetch:async()=>{fetchCount++;if(options.offline)throw Error('offline');return options.response||new Response('network',{status:200})}});
+ vm.runInContext(fs.readFileSync('dist/sw.js','utf8'),context);
+ return {records,deleted,fetchCount:()=>fetchCount,async request(path,mode='cors',method='GET'){response=undefined;handlers.fetch({request:{url:new URL(path,scope).href,mode,method},respondWith:p=>response=p,waitUntil:p=>waits.push(p)});const r=await response;await Promise.all(waits);return r},async activate(){handlers.activate({waitUntil:p=>waits.push(p)});await Promise.all(waits)}};
+}
+test('offline deep links recover the cached app shell',async()=>{const w=worker({offline:true});w.records.set('https://example.test/abhyas/index.html',new Response('offline shell'));const r=await w.request('anything?x=1','navigate');assert.equal(await r.text(),'offline shell')});
+test('service worker does not intercept sibling sites or non-GET requests',async()=>{const w=worker();assert.equal(await w.request('../another-site/'),undefined);assert.equal(await w.request('https://other.test/abhyas/'),undefined);assert.equal(await w.request('app.js?v=5','cors','POST'),undefined);assert.equal(w.fetchCount(),0)});
+test('arbitrary query variants cannot create an unbounded cache',async()=>{const w=worker();for(let i=0;i<1000;i++)await w.request(`styles.css?random=${i}`);assert.equal(w.fetchCount(),0);assert.equal(w.records.size,0)});
+test('many navigation URLs share a single canonical cached document',async()=>{const w=worker();for(let i=0;i<100;i++)await w.request(`?page=${i}`,'navigate');assert.equal(w.records.size,1)});
+test('cache quota failures do not discard successful network responses',async()=>{const w=worker({cacheFull:true});const r=await w.request('app.js?v=5');assert.equal(await r.text(),'network')});
+test('HTTP errors use the last working offline copy',async()=>{const w=worker({response:new Response('error',{status:503})});w.records.set('https://example.test/abhyas/app.js?v=5',new Response('last working'));const r=await w.request('app.js?v=5');assert.equal(await r.text(),'last working')});
+test('redirects cannot replace a cached application asset',async()=>{const r=new Response('redirect');Object.defineProperty(r,'redirected',{value:true});const w=worker({response:r});w.records.set('https://example.test/abhyas/app.js?v=5',new Response('safe'));assert.equal(await (await w.request('app.js?v=5')).text(),'safe')});
+test('activation deletes only older caches belonging to this app scope',async()=>{const own='abhyas-https://example.test/abhyas/-',w=worker({keys:[own+'v4',own+'v6','another-app-v2','abhyas-https://example.test/other/-v4']});await w.activate();assert.deepEqual(w.deleted,[own+'v4'])});

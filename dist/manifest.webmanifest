@@ -1,13 +1,13 @@
 {
   "id": "./",
-  "name": "Abhyas — UPSC study workspace",
+  "name": "Abhyas \u00e2\u20ac\u201d UPSC study workspace",
   "short_name": "Abhyas",
   "description": "Your calm workspace for UPSC preparation.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f6f5f0",
-  "theme_color": "#234b3d",
+  "background_color": "#f4f6f6",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "icon.svg",

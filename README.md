@@ -28,12 +28,14 @@ Open http://127.0.0.1:4174 in a browser. No build step or package installation i
 - Guided breathing, screen breaks, walking breaks and water log.
 - Theme and profile preferences, personal target countdown, JSON backup export/import.
 - Responsive mobile navigation, web app manifest and offline asset caching.
+- White, black and subtle teal visual design, geometric illustration, timer ring and reduced-motion support.
+- Signed offline Android edition with native file import/export; see [Android instructions](android/README.md).
 
 ## Important product boundaries
 
-This is a client-side web app, not a native Android/iOS binary. Browser installation and offline support depend on the browser and hosting authentication. Alarms need the page open and device awake; this is not a replacement for system wake-up alarms. Notifications require permission. The app does not run a background alarm service.
+The website is a client-side web app. The Android APK bundles it in a restricted native WebView; there is no native iOS binary. Browser installation and offline support depend on the browser. Alarms need the app open and device awake; this is not a replacement for system wake-up alarms. Browser notifications require permission. Neither edition runs a background alarm service.
 
-All study data remains in browser localStorage. There is no account, server database, cloud sync, coaching content feed, or third-party analytics. Export backups before clearing browser data. Use one editing tab at a time. Typography uses native system fonts: San Francisco on Apple devices, with platform-appropriate system fallbacks elsewhere. No external font requests are made.
+All study data remains in localStorage within the browser or Android app. There is no account, server database, cloud sync, coaching content feed, or third-party analytics. Export backups before clearing data or uninstalling. Website and Android data are separate; backups transfer between them. Use one editing tab at a time. Typography uses native system fonts: San Francisco on Apple devices, with platform-appropriate system fallbacks elsewhere. No external font requests are made.
 
 The syllabus is an intentionally broad preparation checklist, not an exhaustive or official syllabus. Follow current UPSC notices for authoritative requirements. Starter tasks and notes are editable examples; no study results are fabricated.
 
@@ -41,8 +43,8 @@ The syllabus is an intentionally broad preparation checklist, not an exhaustive 
 
 `node --check dist/app.js`
 
-`node --test tests/core.test.cjs`
+`node --test tests/*.test.cjs`
 
-Core tests cover timer completion, pause/reset behavior, break accounting, alarm deduplication, backup validation, escaping, and activity totals. Browser checks cover task creation, timer persistence, note autosave/search, syllabus changes, reminders, themes and mobile layout.
+Tests cover timer accounting, reminders, malformed imports, storage recovery, competing tabs, injection payloads, offline caching, large data sets, and Android bridge behavior. See [audit report](AUDIT.md) for findings, fixes, evidence and remaining limitations.
 
 Source is in `dist/`; deployment identity and static root are in `.openai/hosting.json`.

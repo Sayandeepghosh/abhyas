@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#234b3d"><meta name="description" content="A little more focused, every day. Abhyas is your personal UPSC workspace for Prelims, Mains, revision and a healthier study routine.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#ffffff"><meta name="description" content="A little more focused, every day. Abhyas is your personal UPSC workspace for Prelims, Mains, revision and a healthier study routine.">
   <title>Abhyas — A little more focused, every day.</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="manifest" href="manifest.webmanifest">
-  <script>try{document.documentElement.dataset.theme=JSON.parse(localStorage.getItem('abhyas-v1')||'{}').settings?.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){document.documentElement.dataset.theme='light'}</script>
-  <link rel="stylesheet" href="styles.css?v=3">
-  <script src="app.js" defer></script>
+  <script src="theme.js?v=6"></script>
+  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="design.css?v=6">
+  <script src="data.js?v=6" defer></script>
+  <script src="app.js?v=6" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -17,12 +21,15 @@
     <nav id="navigation" aria-label="Main navigation"></nav>
     <div class="sidebar-bottom"><div class="small-quote"><span class="quote-mark">“</span>Big journeys.<br>Small, daily steps.<div class="mini-line"></div></div><button class="nav-item" data-page="settings" id="settings-nav"></button><div class="profile"><span class="avatar" id="avatar">A</span><div><strong id="profile-name">Aspirant</strong><small>One day at a time</small></div><span class="status-dot" title="Saved on this device"></span></div></div>
   </aside>
+  <div id="screen-shade" class="screen-shade" aria-hidden="true"></div>
+  <nav class="mobile-tabs" id="mobile-tabs" aria-label="Quick navigation"></nav>
   <div class="app-shell">
     <header class="topbar"><div class="breadcrumbs"><button class="icon-button mobile-menu" id="menu-button" aria-label="Open navigation"></button><span>Workspace</span><span class="crumb-slash">/</span><strong id="breadcrumb">Overview</strong></div><div class="header-actions"><span class="today-label" id="today-label"></span><button class="icon-button" id="theme-button" aria-label="Switch to dark mode"></button><button class="icon-button reminder-button" data-page="reminders" aria-label="Study reminders"></button><button class="top-avatar" data-page="settings" aria-label="Profile settings">A</button></div></header>
     <main id="main" tabindex="-1"></main>
     <footer>Built for the long journey.<span>A little more focused, every day.</span><button id="guide-button">Getting started ↗</button></footer>
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="data-status" class="data-status" role="alert" hidden><p id="data-status-message"></p><button class="btn" id="data-export">Export a recovery copy</button><button class="btn" id="data-reload">Reload</button></div>
   <dialog id="modal"><div id="modal-content"></div></dialog>
   <div id="alarm-banner" class="alarm-banner" role="alert" hidden></div>
 </body></html>

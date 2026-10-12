@@ -2,3 +2,10 @@ node_modules/
 *.tar.gz
 *.tar
 *.log
+android/.build/
+*.apk
+*.apk.idsig
+*.keystore
+*.jks
+*.p12
+*password*.txt
