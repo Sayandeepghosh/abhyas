@@ -37,7 +37,7 @@ Open http://127.0.0.1:4174 in a browser. No build step or package installation i
 
 The website is a client-side web app. The Android APK bundles it in a restricted native WebView; there is no native iOS binary. Browser installation and offline support depend on the browser. Alarms need the app open and device awake; this is not a replacement for system wake-up alarms. Browser notifications require permission. Neither edition runs a background alarm service.
 
-All study data remains in localStorage within the browser or Android app. There is no account, server database, cloud sync, coaching content feed, or third-party analytics. Export backups before clearing data or uninstalling. Website and Android data are separate; backups transfer between them. Use one editing tab at a time. Typography uses native system fonts: San Francisco on Apple devices, with platform-appropriate system fallbacks elsewhere. No external font requests are made.
+All study data remains in localStorage within the browser or Android app. Local accounts encrypt study data at rest. There is no server database, cloud sync, coaching content feed, or third-party analytics. Export backups before clearing data or uninstalling. Website and Android data are separate; backups transfer between them. Use one editing tab at a time. Typography uses native system fonts: San Francisco on Apple devices, with platform-appropriate system fallbacks elsewhere. No external font requests are made.
 
 The syllabus is an intentionally broad preparation checklist, not an exhaustive or official syllabus. Follow current UPSC notices for authoritative requirements. Starter tasks and notes are editable examples; no study results are fabricated.
 
@@ -50,3 +50,7 @@ The syllabus is an intentionally broad preparation checklist, not an exhaustive 
 Tests cover timer accounting, reminders, malformed imports, storage recovery, competing tabs, injection payloads, offline caching, large data sets, and Android bridge behavior. See [audit report](AUDIT.md) for findings, fixes, evidence and remaining limitations.
 
 Source is in `dist/`; deployment identity and static root are in `.openai/hosting.json`.
+
+## Local accounts
+
+Version 1.2 adds local username/password accounts and encrypted study workspaces. Accounts exist only in the current browser/app on the current device. Deleting an account, clearing app/browser data or uninstalling removes its stored credentials and study data. No Google login, cloud sync or password reset is provided. Keep an encrypted backup and its password. See [local account documentation](AUTH-SETUP.md).

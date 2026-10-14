@@ -30,6 +30,9 @@ jobs:
           node --check dist/theme.js
           node --check dist/studio.js
           node --check dist/motion.js
+          node --check dist/accounts.js
+          node --check dist/vault.js
+          node --check dist/password-policy.js
       - name: Test study tools
         run: node --test tests/*.test.cjs
       - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0

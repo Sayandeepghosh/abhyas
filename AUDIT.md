@@ -82,3 +82,9 @@ Checked in Chromium at desktop 1366×900 and phone 390×844, 390×500 and 320×5
 6. **Browser fallback race.** Browsers without Web Locks use compare-before-write and storage events. That fallback reduces conflicts but is not a transactional cross-tab lock; use one editing tab.
 
 References: [MDN CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy), [MDN Web Locks](https://developer.mozilla.org/en-US/docs/Web/API/Web_Locks_API), [GitHub Pages HTTPS](https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https), [Android local content](https://developer.android.com/develop/ui/views/layout/webapps/load-local-content), [Android APK signer](https://developer.android.com/tools/apksigner).
+
+## Local accounts 1.2 — 14 October 2026
+
+Added encrypted local accounts; see AUTH-SETUP.md for cryptography, migration and threat-model limits. Added tests for password rules, encryption/decryption, tamper rejection, different user identities and salts, non-exportable keys, account isolation, persistence, wrong-password rejection, storage quota failure and scoped deletion. Browser checks verify signup, wrong-password rejection, logout and saved task persistence on re-login. This is local data protection, not online identity verification. Older plaintext workspace data remains until explicitly migrated; Settings exports are plaintext, while the account backup is encrypted. Physical Android device validation remains outstanding.
+
+Validation for 1.2: 64 automated tests passed, including encrypted restore and legacy migration failure cases. Mobile signup was checked for horizontal overflow.
